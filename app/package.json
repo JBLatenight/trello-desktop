@@ -1,0 +1,29 @@
+{
+  "name": "trello-desktop",
+  "productName": "Trello",
+  "description": "Desktop Wrapper for Trello",
+  "version": "0.8.0",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": "JBLatenight/trello-desktop",
+  "author": {
+    "name": "Jeff Bargmann",
+    "url": "https://twitter.com/jeffbargmann"
+  },
+  "contributors": [
+    {
+      "name": "Jeff Bargmann",
+      "url": "https://twitter.com/jeffbargmann"
+    }
+  ],
+  "keywords": [
+    "trello",
+    "electron",
+    "electron-app"
+  ],
+  "dependencies": {
+    "electron-debug": "^0.6.0",
+    "electron-default-menu": "^0.1.1",
+    "electron-window-state": "^3.0.3"
+  }
+}
