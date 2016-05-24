@@ -1,5 +1,6 @@
 var app = require('app'),
     Menu = require('menu'),
+    shell = require('shell'),
     BrowserWindow = require('browser-window'),
     defaultMenu = require('electron-default-menu'),
     WindowTools = require('./utils/window_tools');
@@ -17,6 +18,7 @@ app.on('window-all-closed', function () {
 
 // Startup
 var mainWindow;
+var homeUrl = 'https://trello.com';
 app.on('ready', function () {
     // Create window
     var lastWindowState = require('electron-window-state')({
@@ -43,15 +45,21 @@ app.on('ready', function () {
     var menu = defaultMenu();
     Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
 
+    // Set dock menu
+    const dockMenu = Menu.buildFromTemplate([
+        { label: 'Open in Browser', click() { shell.openExternal(homeUrl); } },
+    ]);
+    app.dock.setMenu(dockMenu);
+
     // Hide window rather than actually closing on close
     WindowTools.makeWindowHideOnClose(mainWindow);
 
     // Launch Trello website
-    mainWindow.loadUrl('https://trello.com');
+    mainWindow.loadUrl(homeUrl);
 });
 
 // Show window on activate
 function onActivate() {
-    mainWindow.show();
+    if(mainWindow) mainWindow.show();
 }
 app.on('activate', onActivate);
